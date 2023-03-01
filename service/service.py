@@ -12,13 +12,12 @@ def _make_sberapi_summarize_call(text: str) -> str:
         "instances": [
             {
                 "text": text,
-                "num_beams": 15,  # ???
+                "num_beams": 50,  # ???
                 "num_return_sequences": 15,  # ???
-                "length_penalty": 0.5  # Penalty for the length of the summarizer result (a value in (0, 1))
+                "length_penalty": 0.9999  # Penalty for the length of the summarizer result (a value in (0, 1))
             }
         ]
     })
-    print(response.text)
 
     response.raise_for_status()  # Raise an exception for any HTTP errors
 
