@@ -1,7 +1,7 @@
 import requests
 import json
 
-from . import OPENAI_API_LINK, SBER_API_LINK
+from . import OPENAI_API_LINK, OPENAI_API_SECRET, SBER_API_LINK
 
 
 def summarize(text: str, api="sber") -> str:
@@ -68,7 +68,7 @@ def _make_openai_summarize_call(text: str, prompt="Summarize the text below (try
 
     response = requests.post(OPENAI_API_LINK, headers={
         "Content-Type": "application/json",
-        'Authorization': 'Bearer ' + "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"
+        'Authorization': 'Bearer ' + OPENAI_API_SECRET
     }, json={
         "model": "gpt-3.5-turbo",
         "messages": [{"role": "user", "content": prompt + " " + text}]
