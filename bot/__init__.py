@@ -1,7 +1,7 @@
 import os
 import telebot
 import time
-
+from jsonreader import saveMessages
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
@@ -22,9 +22,7 @@ def start(message):
 
 
 @client.on_message(filters.command("summarize", prefixes='/'))
-def type(client_object, message: Message):
-    for data in client_object.get_chat_history(-884174798):
-        print(data.text)
-
+def typee(client_object, message: Message):
+    saveMessages(client_object.get_chat_history(-884174798))
 
 client.run()
